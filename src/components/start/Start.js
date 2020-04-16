@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from "react"
+import axios from "axios"
 
 import SearchResult from "../SearchResult/SearchResult"
 import Player1 from "../Player1/Player1"
 import Player2 from "../Player2/Player2"
 import Player1SeasonAvg from "../Player1SeasonAvg/Player1SeasonAvg"
+
+import Lebron from "../Lebron/Lebron"
+import Curry from "../Curry/Curry"
 
 export default function Start() {
 
@@ -66,7 +69,10 @@ export default function Start() {
       {player1 && <Player1 player1={player1} /> || <p> Player 1: Not Selected</p>}
       {player2 && <Player2 player2={player2} /> || <p> Player 2: Not Selected</p>}
       <button onClick={() => console.log(player1)}>button</button>
+      <Curry/>
       <p>stats</p>
+      <Lebron />
+  
       {player1 && <Player1SeasonAvg player1={player1} />}
     </div >
   )
