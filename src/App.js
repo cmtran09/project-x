@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import "./styles/styles.scss"
 
-import Start from "./components/start/Start"
+import Start from "./components/Start/Start"
 
 const App = () => (
 	<BrowserRouter>
