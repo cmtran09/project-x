@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 import SearchResult from "../SearchResult/SearchResult"
-import SelectedPlayer1 from "../SelectedPlayer1/SelectedPlayer1"
-import SelectedPlayer2 from "../SelectedPlayer2/SelectedPlayer2"
+import Player1 from "../Player1/Player1"
+import Player2 from "../Player2/Player2"
+import Player1SeasonAvg from "../Player1SeasonAvg/Player1SeasonAvg"
 
 export default function Start() {
 
@@ -62,9 +63,11 @@ export default function Start() {
           />
         }
       </div>
-      {player1 && <SelectedPlayer1 player1={player1} /> || <p> Player 1: Not Selected</p>}
-      {player2 && <SelectedPlayer2 player2={player2} /> || <p> Player 2: Not Selected</p>}
+      {player1 && <Player1 player1={player1} /> || <p> Player 1: Not Selected</p>}
+      {player2 && <Player2 player2={player2} /> || <p> Player 2: Not Selected</p>}
       <button onClick={() => console.log(player1)}>button</button>
+      <p>stats</p>
+      {player1 && <Player1SeasonAvg player1={player1} />}
     </div >
   )
 }
