@@ -6,7 +6,7 @@ export default function Start() {
   const [player1, setPlater1] = useState(null)
   const [player2, setPlater2] = useState(null)
 
-  const [searchResult, setSearchResult] = useState({})
+  const [searchResult, setSearchResult] = useState([])
 
   function getPlayer(e) {
     e.preventDefault()
@@ -25,6 +25,46 @@ export default function Start() {
     console.log(player1)
   }
 
+  function renderResultz(){
+    if(searchResult.length !== 0){
+      return (
+        <p>not !== 0</p>
+      )
+    } else return (
+      <p>i === 0</p>
+
+    )
+  }
+
+  const list = [{name:1},{name:3},{name:23},{name:"p"},{name:1}]
+
+  function renderResults(){
+    if(searchResult.length !== 0){
+      console.log("not zero length")
+        searchResult.map((player, i) => {
+          console.log("not zero length - insode loop")
+          return (
+            <li key={i}>
+              <p>hello</p>
+            </li>
+          )
+        })
+    } else console.log("zero length")
+  }
+
+  console.log("search result", searchResult)
+  // function renderResults(){
+  //   if(!searchResult){
+  //     return (
+  //       searchResult.data.map(i => {
+  //         return (
+  //           <li key={i}>player.id</li>
+  //         )
+  //       })
+  //     )
+  //   } else return
+  // }
+
   return (
     <div>
       <p>
@@ -40,6 +80,16 @@ export default function Start() {
           getPlayer(e)
         }}>Search</button>
       </form>
+      <div className="list">
+        {renderResults()}
+        {renderResultz()}
+      </div>
+      <button onClick={()=>console.log(searchResult[0].id)}></button>
+      {list.map((elem,i)=>{
+        return (
+          <li key={i}>{elem.name}</li>
+        )
+      })}
     </div>
   )
 }
