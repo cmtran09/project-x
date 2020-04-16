@@ -3,11 +3,14 @@ import axios from 'axios'
 
 import SearchResult from "../SearchResult/SearchResult"
 import SelectedPlayer1 from "../SelectedPlayer1/SelectedPlayer1"
+import SelectedPlayer2 from "../SelectedPlayer2/SelectedPlayer2"
 
 export default function Start() {
 
   const [player1, setPlayer1] = useState(null)
-  const [player2, setPlater2] = useState(null)
+  const [player1Selected, setPlayer1Selected] = useState(false)
+  const [player2, setPlayer2] = useState(null)
+  const [player2Selected, setPlayer2Selected] = useState(false)
 
   const [playerSearch, setPlayerSearch] = useState(null)
   const [searchResult, setSearchResult] = useState([])
@@ -46,10 +49,22 @@ export default function Start() {
         }}>Search</button>
       </form>
       <div className="list">
-        {searchResult && <SearchResult searchResult={searchResult} setPlayer1={setPlayer1} setSearchResult={setSearchResult} />}
+        {searchResult &&
+          <SearchResult
+            searchResult={searchResult}
+            setPlayer1={setPlayer1}
+            player1Selected={player1Selected}
+            setPlayer1Selected={setPlayer1Selected}
+            setPlayer2={setPlayer2}
+            player2Selected={player2Selected}
+            setPlayer2Selected={setPlayer2Selected}
+            setSearchResult={setSearchResult}
+          />
+        }
       </div>
       {player1 && <SelectedPlayer1 player1={player1} /> || <p> Player 1: Not Selected</p>}
-      <button onClick={() => console.log(searchResult[0].id)}>button</button>
+      {player2 && <SelectedPlayer2 player2={player2} /> || <p> Player 2: Not Selected</p>}
+      <button onClick={() => console.log(player1)}>button</button>
     </div >
   )
 }

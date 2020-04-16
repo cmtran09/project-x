@@ -10,8 +10,15 @@ export default function SearchResult(props) {
           className=""
           onClick={() => {
             console.log(`${player.first_name} ${player.last_name}`)
-            props.setPlayer1(player)
-            props.setSearchResult(null)
+            if (!props.player1Selected) {
+              props.setPlayer1(player)
+              props.setSearchResult(null)
+              props.setPlayer1Selected(true)
+            } else {
+              props.setPlayer2(player)
+              props.setSearchResult(null)
+              props.setPlayer2Selected(true)
+            }
           }}
           style={{ cursor: "pointer" }}
         >
