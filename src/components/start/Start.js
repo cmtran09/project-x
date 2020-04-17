@@ -69,9 +69,9 @@ export default function Start() {
       {player1 && <Player1 player1={player1} /> || <p> Player 1: Not Selected</p>}
       {player2 && <Player2 player2={player2} /> || <p> Player 2: Not Selected</p>}
       <button onClick={() => console.log(player1)}>button</button>
-      <Curry/>
+      {/* <Curry/> */}
       <p>stats</p>
-      <Lebron />
+      {/* <Lebron /> */}
   
       {player1 && <Player1SeasonAvg player1={player1} />}
     </div >
