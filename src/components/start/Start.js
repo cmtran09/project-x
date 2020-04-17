@@ -71,8 +71,8 @@ export default function Start() {
       <button onClick={() => console.log(player1)}>button</button>
       {/* <Curry/> */}
       <p>stats</p>
-      {/* <Lebron /> */}
-  
+      <Lebron />
+
       {player1 && <Player1SeasonAvg player1={player1} />}
     </div >
   )

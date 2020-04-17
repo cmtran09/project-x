@@ -5,31 +5,31 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "rec
 export default function Lebron() {
 
   const emptyData = [
-    {name: 'games_played'},
-    {name: 'Player_id'},
-    {name: 'season'},
-    {name: 'min'},
-    {name: 'fgm'},
-    {name: 'fga'},  
-    {name: 'fg3m'},
-    {name: 'fg3a'},
-    {name: 'fga'},
-    {name: 'ftm'},
-    {name: 'oreb'},
-    {name: 'dreb'},  
-    {name: 'reb'},
-    {name: 'ast'},
-    {name: 'stl'}, 
-    {name: 'blk'},
-    {name: 'turnover'},
-    {name: 'pf'},
-    {name: 'pts'},
-    {name: 'fg_pct'}, 
-    {name: 'fg3_pct'},
-    {name: 'ft_pct'}
+    { name: 'games_played' },
+    { name: 'Player_id' },
+    { name: 'season' },
+    { name: 'min' },
+    { name: 'fgm' },
+    { name: 'fga' },
+    { name: 'fg3m' },
+    { name: 'fg3a' },
+    { name: 'fga' },
+    { name: 'ftm' },
+    { name: 'oreb' },
+    { name: 'dreb' },
+    { name: 'reb' },
+    { name: 'ast' },
+    { name: 'stl' },
+    { name: 'blk' },
+    { name: 'turnover' },
+    { name: 'pf' },
+    { name: 'pts' },
+    { name: 'fg_pct' },
+    { name: 'fg3_pct' },
+    { name: 'ft_pct' }
   ]
 
-  const playerID = 236
+  const playerID = 237
 
   const [lebronAvg, setLebronAvg] = useState()
   const [theData, setTheData] = useState()
@@ -44,42 +44,42 @@ export default function Lebron() {
   }, [])
 
   // console.log("array 22 length with name",Array(22).fill({name:null}))
-  console.log("aempty data array",emptyData)
+  console.log("aempty data array", emptyData)
   // emptyData[0]["lebron"]="hello mate"
 
-  function pushLebron(){
-    emptyData.map((elem,i)=>{
-        elem["lebron"]=Object.entries(lebronAvg)[i][1]
+  function pushLebron() {
+    emptyData.map((elem, i) => {
+      elem["lebron"] = Object.entries(lebronAvg)[i][1]
     })
     setTheData(emptyData)
     // Object.entries(lebronAvg).map(e=>console.log(e))
   }
   // pushLebron()
-  console.log("aempty data array after push",emptyData)
+  console.log("aempty data array after push", emptyData)
 
   // console.log("aempty data array pushed with some data",emptyData[0]["lebron"]="hello mate")
-  
+
   console.log(theData)
   return (
     <div>
       <p>LEBRON AVG</p>
-      <button onClick={() => console.log(lebronAvg)}>BRON BRON BUTTON</button>
-      <button onClick={() => console.log(Object.entries(lebronAvg))}>BRON BRON BUTTON entries</button>
-      <button onClick={() => console.log(pushLebron())}>BRONentries print</button>
+      <button onClick={() => console.log(lebronAvg)}>  lebronAvg BUTTON log</button>
+      <button onClick={() => console.log(Object.entries(lebronAvg))}> Object.entries(lebronAvg) log</button>
+      <button onClick={() => pushLebron()}>BRONentries print</button>
       <button onClick={() => console.log(emptyData)}>empty print</button>
-      <button onClick={() => console.log(theData)}>empty print</button>
-      {theData && <BarChart width={600} height={300} data={theData.slice(0,1).concat(theData.slice(3,21))}
-            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-       <CartesianGrid strokeDasharray="3 3"/>
-       <XAxis dataKey="name"/>
-       <YAxis/>
-       <Tooltip/>
-       <Legend />
-       <Bar dataKey="pv" fill="#8884d8" />
-       <Bar dataKey="lebron" fill="#82ca9d" />
+      <button onClick={() => console.log(theData)}>theData print</button>
+      {theData && <BarChart width={600} height={300} data={theData.slice(0, 1).concat(theData.slice(3, 21))}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="lebron" fill="#82ca9d" />
       </BarChart>}
-    </div> 
-    
+    </div>
+
   )
 }
 
