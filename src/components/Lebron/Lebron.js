@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
-// import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
 
 export default function Lebron() {
 
@@ -32,6 +32,7 @@ export default function Lebron() {
   const playerID = 236
 
   const [lebronAvg, setLebronAvg] = useState()
+  const [theData, setTheData] = useState()
 
   useEffect(() => {
     axios.get(`https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerID}&season=2019`)
@@ -50,6 +51,7 @@ export default function Lebron() {
     emptyData.map((elem,i)=>{
         elem["lebron"]=Object.entries(lebronAvg)[i][1]
     })
+    setTheData(emptyData)
     // Object.entries(lebronAvg).map(e=>console.log(e))
   }
   // pushLebron()
@@ -57,7 +59,7 @@ export default function Lebron() {
 
   // console.log("aempty data array pushed with some data",emptyData[0]["lebron"]="hello mate")
   
-
+  console.log(theData)
   return (
     <div>
       <p>LEBRON AVG</p>
@@ -65,7 +67,8 @@ export default function Lebron() {
       <button onClick={() => console.log(Object.entries(lebronAvg))}>BRON BRON BUTTON entries</button>
       <button onClick={() => console.log(pushLebron())}>BRONentries print</button>
       <button onClick={() => console.log(emptyData)}>empty print</button>
-      {/* <BarChart width={600} height={300} data={data}
+      <button onClick={() => console.log(theData)}>empty print</button>
+      {theData && <BarChart width={600} height={300} data={theData.slice(0,1).concat(theData.slice(3,21))}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
        <CartesianGrid strokeDasharray="3 3"/>
        <XAxis dataKey="name"/>
@@ -74,7 +77,7 @@ export default function Lebron() {
        <Legend />
        <Bar dataKey="pv" fill="#8884d8" />
        <Bar dataKey="lebron" fill="#82ca9d" />
-      </BarChart> */}
+      </BarChart>}
     </div> 
     
   )
