@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import "./styles/styles.scss"
 
+import "@babel/polyfill"
+
 import Start from "./components/Start/Start"
 
 const App = () => (

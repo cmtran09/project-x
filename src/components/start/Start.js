@@ -23,19 +23,14 @@ export default function Start() {
     e.preventDefault()
     axios.get(`https://www.balldontlie.io/api/v1/players?search=${playerSearch}`)
       .then(res => {
-        console.log(res.data)
         setSearchResult(res.data.data)
-        console.log("state", searchResult)
       })
       .catch(err => console.log(err))
   }
 
   function handleChange(e) {
     setPlayerSearch(e.target.value)
-    console.log(player1)
   }
-
-  console.log("search result", searchResult)
 
   return (
     <div>
@@ -69,9 +64,9 @@ export default function Start() {
       {player1 && <Player1 player1={player1} /> || <p> Player 1: Not Selected</p>}
       {player2 && <Player2 player2={player2} /> || <p> Player 2: Not Selected</p>}
       <button onClick={() => console.log(player1)}>button</button>
-      {/* <Curry/> */}
+      <Curry />
       <p>stats</p>
-      <Lebron />
+      {/* <Lebron /> */}
 
       {player1 && <Player1SeasonAvg player1={player1} />}
     </div >

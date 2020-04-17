@@ -14,28 +14,25 @@ export default function Player1SeasonAvg(props) {
   const [player1Avg, setPlayer1Avg] = useState()
   const [chartData, setChartData] = useState()
 
-
-  // let settings
-
-  useEffect(() => {
-    axios.get(`https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerID}&season=2019`)
-      .then(resp => {
-        setPlayer1Avg(resp.data.data[0])
-      })
-      // .then(() => addAvgToArr())
-      .catch(err => console.log(err))
-  }, [])
-
   function addTochartData() {
     console.log('addAvgToArr function run')
     emptyData.map((elem, i) => {
       elem[player1Name] = Object.entries(player1Avg)[i][1]
     })
     setChartData(emptyData)
-    // Object.entries(player1Avg).map(e=>console.log(e))
   }
 
-  console.log(BLANKAVG)
+  useEffect(() => {
+    axios.get(`https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerID}&season=2019`)
+      .then(resp => {
+        setPlayer1Avg(resp.data.data[0])
+        // addTochartData()
+      })
+      .then(console.log("player1Avg inside use effect", player1Avg))
+      // .then(setTimeout(console.log("hi"), 3000))
+      // .then(resp => addTochartData())
+      .catch(err => console.log(err))
+  }, [])
 
   return (
     <div>
