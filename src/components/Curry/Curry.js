@@ -4,32 +4,19 @@ import axios from "axios"
 
 export default function Curry() {
 
-    const [data, setData] = useState()
+    let time = "25:51"
 
-    function promise1(data) {
-        return new Promise((resolve, reject) => {
-            if (data !== undefined) {
-                console.log("promise1 resolved", console.log(data))
-                resolve(data)
-            } else {
-                console.log("promise1 rejected")
-            } reject(Error('promise1 rejected'))
-        })
+    function timeConverter(time) {
+        return time.split(":").map(elem => parseInt(elem)).join(".")
     }
 
-    useEffect(() => {
-        axios.get(`https://www.balldontlie.io/api/v1/season_averages?player_ids[]=237&season=2019`)
-            .then(res => {
-                setData(res.data.data[0].games_played)
-                console.log("logging the data inside the useeffect", data)
-                promise1(res.data.data[0].games_played)
-            })
-            .then(console.log("post promise1", data)
-            )
-            .catch(err => console.log("err", err))
-    }, [])
+    console.log(time)
+    console.log(time.split(":").map(elem => parseInt(elem)).join("."))
+    console.log(timeConverter(time))
 
-    console.log("logging asyn", data)
+
+
+
 
     return (
         <div>
