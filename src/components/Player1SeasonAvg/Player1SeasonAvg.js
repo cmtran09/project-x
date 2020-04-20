@@ -34,6 +34,12 @@ export default function Player1SeasonAvg(props) {
       .catch(err => console.log(err))
   }, [])
 
+  useEffect(() => {
+    if (player1Avg) {
+      addTochartData()
+    }
+  }, [player1Avg])
+
   return (
     <div>
       <p>plyer 1 AVG component</p>
