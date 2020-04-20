@@ -73,10 +73,25 @@ export default function Start() {
       <Curry />
       <p>stats</p>
       {/* <Lebron /> */}
-
-      {player1 && <Player1SeasonAvg player1={player1} setPlayer1Data={setPlayer1Data} player1Data={player1Data} />}
-      {player2 && <Player2SeasonAvg player2={player2} setPlayer2Data={setPlayer2Data} player2Data={player2Data} />}
-      {player1Data && <ComparisonChart player1={player1} player1Data={player1Data} player2data={player2Data} />}
+      {player1 &&
+        <Player1SeasonAvg
+          player1={player1}
+          setPlayer1Data={setPlayer1Data}
+          player1Data={player1Data}
+        />}
+      {player2 &&
+        <Player2SeasonAvg
+          player2={player2}
+          setPlayer2Data={setPlayer2Data}
+          player2Data={player2Data}
+        />}
+      {player1Data && player2Data &&
+        <ComparisonChart
+          player1={player1}
+          player2={player2}
+          player1Data={player1Data}
+          player2Data={player2Data}
+        />}
       <button onClick={() => console.log(player1Data)}>AVERAGE</button>
       <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
     </div >

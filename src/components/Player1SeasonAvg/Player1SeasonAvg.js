@@ -34,6 +34,9 @@ export default function Player1SeasonAvg(props) {
   return (
     <div>
       <p>{`plyer 1 : ${player1Name} AVG component`}</p>
+
+      <button onClick={() => console.log(props.player1Data)}>average in p1 comp AVERAGE2</button>
+
       {/* 
       <button onClick={() => console.log(player1Avg)}>AVERAGE</button>
       <button onClick={() => console.log(Object.entries(player1Avg))}> Object.entries(lebronAvg) log</button>
