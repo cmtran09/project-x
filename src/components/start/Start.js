@@ -5,6 +5,9 @@ import SearchResult from "../SearchResult/SearchResult"
 import Player1 from "../Player1/Player1"
 import Player2 from "../Player2/Player2"
 import Player1SeasonAvg from "../Player1SeasonAvg/Player1SeasonAvg"
+import Player2SeasonAvg from "../Player2SeasonAvg/Player2SeasonAvg"
+
+import ComparisonChart from "../ComparisonChart/ComparisonChart"
 
 import Lebron from "../Lebron/Lebron"
 import Curry from "../Curry/Curry"
@@ -15,6 +18,9 @@ export default function Start() {
   const [player1Selected, setPlayer1Selected] = useState(false)
   const [player2, setPlayer2] = useState(null)
   const [player2Selected, setPlayer2Selected] = useState(false)
+  const [player1Data, setPlayer1Data] = useState()
+  const [player2Data, setPlayer2Data] = useState()
+
 
   const [playerSearch, setPlayerSearch] = useState(null)
   const [searchResult, setSearchResult] = useState([])
@@ -68,7 +74,11 @@ export default function Start() {
       <p>stats</p>
       {/* <Lebron /> */}
 
-      {player1 && <Player1SeasonAvg player1={player1} />}
+      {player1 && <Player1SeasonAvg player1={player1} setPlayer1Data={setPlayer1Data} player1Data={player1Data} />}
+      {player2 && <Player2SeasonAvg player2={player2} setPlayer2Data={setPlayer2Data} player2Data={player2Data} />}
+      {player1Data && <ComparisonChart player1={player1} player1Data={player1Data} player2data={player2Data} />}
+      <button onClick={() => console.log(player1Data)}>AVERAGE</button>
+      <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
     </div >
   )
 }
