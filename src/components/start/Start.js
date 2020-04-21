@@ -85,7 +85,7 @@ export default function Start() {
           setPlayer2Data={setPlayer2Data}
           player2Data={player2Data}
         />}
-      {player1Data && player2Data &&
+      {player1Data &&
         <ComparisonChart
           player1={player1}
           player2={player2}
