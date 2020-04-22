@@ -48,7 +48,7 @@ export default function ComparisonChart(props) {
         <Tooltip />
         <Legend />
         <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey={player1Name} fill="#82ca9d" />
+        <Bar dataKey={props.player1.first_name} fill="#82ca9d" />
       </BarChart>}
       {chartData2 && <BarChart width={600} height={300} data={chartData.slice(0, 1).concat(chartData.slice(3, 21))}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -58,7 +58,7 @@ export default function ComparisonChart(props) {
         <Tooltip />
         <Legend />
         <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey={player2Name} fill="#82ca9d" />
+        <Bar dataKey={props.player2.first_name} fill="#82ca9d" />
       </BarChart>}
     </div>
   )

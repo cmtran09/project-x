@@ -90,7 +90,7 @@ export default function Start() {
           player1={player1}
           player2={player2}
           player1Data={player1Data}
-          player2Data={player2Data}
+          player2Data={!player2Data ? null : player2Data}
         />}
       <button onClick={() => console.log(player1Data)}>AVERAGE</button>
       <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
