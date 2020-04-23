@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
 
 import { BLANKAVG } from "../../constants/Constants.js"
+import { typeOf } from 'react-is'
 
 export default function ComparisonChart(props) {
 
@@ -55,6 +56,8 @@ export default function ComparisonChart(props) {
         { name: 'ft_pct', curry: 0.697 }
     ]
 
+    console.log(parseFloat("3:2139"))
+
 
     const [chartData, setChartData] = useState()
     const [chartData2, setChartData2] = useState()
@@ -64,41 +67,26 @@ export default function ComparisonChart(props) {
     // const player2Name = props.player2.first_name
 
     function timeConverter(time) {
-        return time.split(":").map(elem => parseInt(elem)).join(".")
+        return Number(time.split(":").map(elem => parseInt(elem)).join("."))
     }
 
-    function addTochartDataLeb(data) {
-        emptyData.map((elem, i) => {
-            elem["lebron"] = Object.entries(data)[i][1]
+    function addTochartData(individualPlayerData, name, chartData) {
+        chartData.map((elem, i) => {
+            elem[name] = Object.entries(individualPlayerData)[i][1]
         })
-        emptyData[3]["lebron"] = timeConverter(emptyData[3]["lebron"])
-        return emptyData
+        chartData[3][name][name] = timeConverter(chartData[3][name][name])
+        return chartData
     }
 
-    function addTochartDataCur(data) {
-        emptyData.map((elem, i) => {
-            elem["curry"] = Object.entries(data)[i][1]
-        })
-        emptyData[3]["curry"] = timeConverter(emptyData[3]["curry"])
-        return emptyData
-    }
-
-    // useEffect(() => {
-    //     addTochartData(props.player1Data)
-    // }, [])
-
-    // function complieAllAvailibleData() {
-    //   if (props.player2Data) {
-
-    //   }
-    // }
 
     return (
         <div>
             hello world this is comparisson chart CUURRR component
             <button onClick={() => console.log(dataLeb)}>lebDtat</button>
             <button onClick={() => console.log(dataCur)}>curDtat</button>
-            <button onClick={() => console.log(addTochartDataLeb(dataLeb))}>addTochartDataLeb</button>
+            <button onClick={() => console.log(addTochartData(dataLeb, "lebron", emptyData))}>addTochartDataLeb</button>
+            <button onClick={() => console.log(addTochartData(dataCur, "curry", emptyData))}>addTochartDataCur</button>
+            {/* <button onClick={() => console.log(emptyData[3].lebron.)}>looking</button> */}
             {/* <button onClick={() => console.log(props.player1Data)}>PROPS AVERAGE</button> */}
             {/* {chartData && <BarChart width={600} height={300} data={chartData.slice(0, 1).concat(chartData.slice(3, 21))}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
