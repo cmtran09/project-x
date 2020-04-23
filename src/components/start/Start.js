@@ -12,6 +12,8 @@ import ComparisonChart from "../ComparisonChart/ComparisonChart"
 import Lebron from "../Lebron/Lebron"
 import Curry from "../Curry/Curry"
 
+import { BLANKAVGOBJ } from "../../constants/Constants.js"
+
 export default function Start() {
 
   const [player1, setPlayer1] = useState(null)
@@ -94,6 +96,7 @@ export default function Start() {
         />}
       <button onClick={() => console.log(player1Data)}>AVERAGE</button>
       <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
+      <button onClick={() => console.log(BLANKAVGOBJ)}>BLANKAVGOBJ</button>
     </div >
   )
 }

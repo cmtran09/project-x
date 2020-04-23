@@ -31,6 +31,32 @@ export default function ComparisonChart(props) {
         { name: 'ft_pct', lebron: 0.697 }
     ]
 
+    const dataLebObj = {
+        'games_played': 60,
+        'Player_id': 237,
+        'season': 2019,
+        'min': "34:54",
+        'fgm': 9.77,
+        'fga': 19.6,
+        'fg3m': 2.22,
+        'fg3a': 6.35,
+        'fga': 3.98,
+        'ftm': 5.72,
+        'oreb': 0.95,
+        'dreb': 6.9,
+        'reb': 7.85,
+        'ast': 10.6,
+        'stl': 1.23,
+        'blk': 0.5,
+        'turnover': 3.9,
+        'pf': 1.77,
+        'pts': 25.73,
+        'fg_pct': 0.498,
+        'fg3_pct': 0.34,
+        'ft_pct': 0.697
+    }
+
+
     const dataCur = [
         { name: 'games_played', curry: 60 },
         { name: 'Player_id', curry: 237 },
@@ -91,7 +117,7 @@ export default function ComparisonChart(props) {
             elem[name] = Object.entries(individualPlayerData)[i][1]
         })
         sortArrObjAlphabetically(chartData)
-        // chartData[3][name][name] = timeConverter(chartData[3][name][name])
+        dataToBeCharted[13][name] = timeConverter(dataToBeCharted[13][name])
         return chartData
     }
 
@@ -101,7 +127,7 @@ export default function ComparisonChart(props) {
             hello world this is comparisson chart CUURRR component
             <button onClick={() => console.log(dataLeb)}>lebDtat</button>
             <button onClick={() => console.log(dataCur)}>curDtat</button>
-            <button onClick={() => console.log(addTochartData(dataLeb, "lebron", emptyData))}>addTochartDataLeb</button>
+            <button onClick={() => console.log(addTochartData(dataLebObj, "lebron", emptyData))}>addTochartDataLeb</button>
             <button onClick={() => console.log(addTochartData(dataCur, "curry", emptyData))}>addTochartDataCur</button>
             {/* <button onClick={() => console.log(emptyData[3].lebron.)}>looking</button> */}
             {/* <button onClick={() => console.log(props.player1Data)}>PROPS AVERAGE</button> */}
