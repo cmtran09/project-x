@@ -58,6 +58,22 @@ export default function ComparisonChart(props) {
 
     console.log(parseFloat("3:2139"))
 
+    function sortArrObjAlphabetically(arr) {
+        arr.sort((a, b) => {
+            let textA = a.name
+            let textB = b.name
+            return textA.localeCompare(textB)
+        })
+    }
+
+    // console.log(dataCur.sort((a, b) => {
+    //     let textA = a.name
+    //     let textB = b.name
+    //     return textA.localeCompare(textB)
+    // }))
+
+    // console.log("sort", sortArrObjAlphabetically(dataCur))
+
 
     const [chartData, setChartData] = useState()
     const [chartData2, setChartData2] = useState()
@@ -74,7 +90,8 @@ export default function ComparisonChart(props) {
         chartData.map((elem, i) => {
             elem[name] = Object.entries(individualPlayerData)[i][1]
         })
-        chartData[3][name][name] = timeConverter(chartData[3][name][name])
+        sortArrObjAlphabetically(chartData)
+        // chartData[3][name][name] = timeConverter(chartData[3][name][name])
         return chartData
     }
 
