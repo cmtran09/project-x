@@ -30,6 +30,30 @@ export default function ComparisonChart(props) {
         { name: 'fg3_pct', lebron: 0.34 },
         { name: 'ft_pct', lebron: 0.697 }
     ]
+    const dataReb = [
+        { name: 'games_played', rebron: 60 },
+        { name: 'Player_id', rebron: 237 },
+        { name: 'season', rebron: 2019 },
+        { name: 'min', rebron: "34:54" },
+        { name: 'fgm', rebron: 9.77 },
+        { name: 'fga', rebron: 19.6 },
+        { name: 'fg3m', rebron: 2.22 },
+        { name: 'fg3a', rebron: 6.35 },
+        { name: 'fga', rebron: 3.98 },
+        { name: 'ftm', rebron: 5.72 },
+        { name: 'oreb', rebron: 0.95 },
+        { name: 'dreb', rebron: 6.9 },
+        { name: 'reb', rebron: 7.85 },
+        { name: 'ast', rebron: 10.6 },
+        { name: 'stl', rebron: 1.23 },
+        { name: 'blk', rebron: 0.5 },
+        { name: 'turnover', rebron: 3.9 },
+        { name: 'pf', rebron: 1.77 },
+        { name: 'pts', rebron: 25.73 },
+        { name: 'fg_pct', rebron: 0.498 },
+        { name: 'fg3_pct', rebron: 0.34 },
+        { name: 'ft_pct', rebron: 0.697 }
+    ]
 
     const dataLebObj = {
         'games_played': 60,
@@ -82,7 +106,16 @@ export default function ComparisonChart(props) {
         { name: 'ft_pct', curry: 0.697 }
     ]
 
-    console.log(parseFloat("3:2139"))
+    function spread(arr1, arr2) {
+        return arr1.map((elem, i) => {
+            return elem = { ...elem, ...arr2[i] }
+        })
+    }
+
+    console.log("spreadddd", spread(spread(dataCur, dataLeb), dataReb))
+
+
+    // console.log(parseFloat("3:2139"))
 
     function sortArrObjAlphabetically(arr) {
         arr.sort((a, b) => {
@@ -131,7 +164,7 @@ export default function ComparisonChart(props) {
             <button onClick={() => console.log(addTochartData(dataCur, "curry", emptyData))}>addTochartDataCur</button>
             {/* <button onClick={() => console.log(emptyData[3].lebron.)}>looking</button> */}
             {/* <button onClick={() => console.log(props.player1Data)}>PROPS AVERAGE</button> */}
-            {/* {chartData && <BarChart width={600} height={300} data={chartData.slice(0, 1).concat(chartData.slice(3, 21))}
+            {chartData && <BarChart width={600} height={300} data={chartData.slice(0, 1).concat(chartData.slice(3, 21))}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
@@ -150,7 +183,7 @@ export default function ComparisonChart(props) {
                 <Legend />
                 <Bar dataKey="pv" fill="#8884d8" />
                 <Bar dataKey={props.player2.first_name} fill="#82ca9d" />
-            </BarChart>} */}
+            </BarChart>}
         </div>
     )
 }

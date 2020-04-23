@@ -43,7 +43,6 @@ export default function ComparisonChart(props) {
 
   console.log("conditional", props.player2Data ? true : false)
 
-
   function find(arr) {
     const playerIndex = arr.findIndex(elem => elem.name === "player_id")
     const seasonIndex = arr.findIndex(elem => elem.name === "season")
@@ -56,41 +55,52 @@ export default function ComparisonChart(props) {
     return arr
   }
 
-  useEffect(() => {
-    addTochartData(props.player1Data, player1Name, emptyData)
-    find(emptyData)
-    setChartData(emptyData)
-  }, [])
+  function spread(arr1, arr2) {
+    arr1.map((elem, i) => {
+      return elem = { ...elem, ...arr2[i] }
+    })
+    return arr1
+  }
 
-  useEffect(() => {
-    if (props.player2Data) {
-      setChartData(null)
-      let player1Arr = addTochartData(props.player1Data, props.player1.first_name, [emptyData])
-      let player2Arr = addTochartData(props.player2Data, props.player2.first_name, emptyData)
-      // removePIDandYear(emptyData)
-      // let combinedArr = player1Arr.map((elem, i) => {
-      //   elem = [...elem, ...player2Arr[i]]
-      //   return player1Arr
-      // })
-      // let combinedArr = [...player1Arr, ...player2Arr]
+  // TRY CREATE A FUNCTION THAT RETURNS INDIVIDUAL ARRATYS
+  function toChartData(individualPlayerData, name, dataToBeCharted) {
+    const sortedArr = sortArrObjAlphabetically(Object.entries(individualPlayerData))
+    // spread(dataToBeCharted, sortedArr)
+    // dataToBeCharted[findTimeIndex(dataToBeCharted)][name] = timeConverter(dataToBeCharted[findTimeIndex(dataToBeCharted)][name])
+    return spread(dataToBeCharted, sortedArr)
+  }
 
-      console.log("playerrrr useefect when 1", player1Arr)
-      console.log("playerrrr useefect when two", player2Arr)
+  console.log("spreadddddddddddddddddddddddddddddddd", toChartData(props.player1Data, player1Name, emptyData))
+  // console.log("spread22222222222222222dddddddddddddddd", toChartData(props.player1Data, "player2", emptyData))
+  // console.log("spread", emptyData)
 
-      // find(combinedArr)
-      // setChartData(combinedArr)
-      console.log("it me")
-    }
-  }, [props.player2Data])
+  // useEffect(() => {
+  //   addTochartData(props.player1Data, player1Name, emptyData)
+  //   find(emptyData)
+  //   setChartData(emptyData)
+  // }, [])
 
-  console.log("checking why 16 length arr", chartData)
+  // useEffect(() => {
+  //   if (props.player2Data) {
+  //     setChartData(null)
+  //     // THESE CAUSE DATA TO BE ADDED IN INCORRECTLY
+  //     addTochartData(props.player1Data, props.player1.first_name, emptyData)
+  //     addTochartData(props.player2Data, props.player2.first_name, emptyData)
+  //     // removePIDandYear(emptyData)
+  //     find(emptyData)
+  //     setChartData(emptyData)
+  //     console.log("it me")
+  //   }
+  // }, [props.player2Data])
+
+  // console.log("checking why 16 length arr", chartData)
 
   function sameTwice() {
     let arrX = addTochartData(props.player1Data, player1Name, emptyData)
     return addTochartData(props.player1Data, player1Name, arrX)
   }
 
-  console.log("ARRRRRGGGG", sameTwice())
+  // console.log("ARRRRRGGGG", sameTwice())
 
   return (
     <div>
