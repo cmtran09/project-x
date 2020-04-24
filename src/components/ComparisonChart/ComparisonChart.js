@@ -23,14 +23,6 @@ export default function ComparisonChart(props) {
     return arr.findIndex(elem => elem.name === "min")
   }
 
-  // console.log(Object.entries(props.player1Data))
-  // console.log("ar", sortArrObjAlphabetically(Object.entries(props.player1Data)))
-  // console.log("arrrrrr", addTochartData(props.player1Data, "levrbon", emptyData))
-  // console.log(Object.entries(props.player1Data)[0][0])
-  // console.log(Object.entries(props.player1Data)[1][0])
-
-  console.log("conditional", props.player2Data ? true : false)
-
   function removePIDandSeason(arr) {
     const playerIndex = arr.findIndex(elem => elem.name === "player_id")
     const seasonIndex = arr.findIndex(elem => elem.name === "season")
@@ -68,7 +60,6 @@ export default function ComparisonChart(props) {
   useEffect(() => {
     if (props.player2Data) {
       setChartData(null)
-      console.log("it me")
       const player1ChartData = createPlayerData(props.player1Data, props.player1.first_name)
       const player2ChartData = createPlayerData(props.player2Data, props.player2.first_name)
       removePIDandSeason(player1ChartData)
@@ -102,9 +93,6 @@ export default function ComparisonChart(props) {
             <Bar dataKey={props.player2.first_name} fill="#000E85" />
           }
         </BarChart>}
-      {/* <button onClick={() => console.log(props.player2Data)}>AVERAGE22</button>
-      <button onClick={() => console.log(createPlayerDataNEW(props.player1Data, player1Name, emptyData))}>1 player to chart</button>
-      <button onClick={() => console.log(createPlayerDataNEW(props.player2Data, props.player2.first_name, emptyData))}>2 player to chart</button> */}
       <button onClick={() => console.log(props.player2.first_name)}>props 2 data</button>
       <button onClick={() => props.setPlayer2Data()}>remove 2</button>
 

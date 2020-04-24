@@ -12,16 +12,14 @@ import ComparisonChart from "../ComparisonChart/ComparisonChart"
 import Lebron from "../Lebron/Lebron"
 import Curry from "../Curry/Curry"
 
-import { BLANKAVGOBJ } from "../../constants/Constants.js"
-
 export default function Start() {
 
   const [player1, setPlayer1] = useState(null)
   const [player1Selected, setPlayer1Selected] = useState(false)
   const [player2, setPlayer2] = useState(null)
   const [player2Selected, setPlayer2Selected] = useState(false)
-  const [player1Data, setPlayer1Data] = useState()
-  const [player2Data, setPlayer2Data] = useState()
+  const [player1Data, setPlayer1Data] = useState(null)
+  const [player2Data, setPlayer2Data] = useState(null)
 
 
   const [playerSearch, setPlayerSearch] = useState(null)
@@ -96,9 +94,20 @@ export default function Start() {
           setPlayer2Data={setPlayer2Data}
         // player2Data={!player2Data ? null : player2Data}
         />}
+
       <button onClick={() => console.log(player1Data)}>AVERAGE</button>
       <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
-      <button onClick={() => console.log(BLANKAVGOBJ)}>BLANKAVGOBJ</button>
+      <button onClick={() => console.log(player1)}>player1</button>
+      <button onClick={() => {
+        setPlayer1Data(null)
+        setPlayer1(null)
+        setPlayer1Selected(false)
+      }}>remove player 1</button>
+      <button onClick={() => {
+        setPlayer2Data(null)
+        setPlayer2(null)
+        setPlayer2Selected(false)
+      }}>remove player 2</button>
     </div >
   )
 }
