@@ -4,11 +4,8 @@ import { BLANKAVG } from "../../constants/Constants.js"
 
 export default function ComparisonChart(props) {
 
-
   const [chartData, setChartData] = useState()
-  // const [props.player, setprops.player] = useState()
 
-  const emptyData = BLANKAVG
   const player1Name = props.player1.first_name
 
   function timeConverter(time) {
@@ -26,15 +23,6 @@ export default function ComparisonChart(props) {
     return arr.findIndex(elem => elem.name === "min")
   }
 
-  function addTochartData(individualPlayerData, name, dataToBeCharted) {
-    const sortedArr = sortArrObjAlphabetically(Object.entries(individualPlayerData))
-    dataToBeCharted.map((elem, i) => {
-      elem[name] = sortedArr[i][1]
-    })
-    dataToBeCharted[findTimeIndex(dataToBeCharted)][name] = timeConverter(dataToBeCharted[findTimeIndex(dataToBeCharted)][name])
-    return dataToBeCharted
-  }
-
   // console.log(Object.entries(props.player1Data))
   // console.log("ar", sortArrObjAlphabetically(Object.entries(props.player1Data)))
   // console.log("arrrrrr", addTochartData(props.player1Data, "levrbon", emptyData))
@@ -43,11 +31,10 @@ export default function ComparisonChart(props) {
 
   console.log("conditional", props.player2Data ? true : false)
 
-  function find(arr) {
+  function removePIDandSeason(arr) {
     const playerIndex = arr.findIndex(elem => elem.name === "player_id")
     const seasonIndex = arr.findIndex(elem => elem.name === "season")
     if (playerIndex && seasonIndex > 0) {
-      console.log("we found the indexes")
       arr.splice(seasonIndex, 1)
       arr.splice(playerIndex, 1)
       return arr
@@ -55,52 +42,41 @@ export default function ComparisonChart(props) {
     return arr
   }
 
-  function spread(arr1, arr2) {
-    arr1.map((elem, i) => {
+  function combinePlayerData(arr1, arr2) {
+    return arr1.map((elem, i) => {
       return elem = { ...elem, ...arr2[i] }
     })
-    return arr1
   }
 
-  // TRY CREATE A FUNCTION THAT RETURNS INDIVIDUAL ARRATYS
-  function toChartData(individualPlayerData, name, dataToBeCharted) {
+  //create individual arrays
+  function createPlayerData(individualPlayerData, name) {
+    const emptyFormatArr = JSON.parse(JSON.stringify(BLANKAVG))
     const sortedArr = sortArrObjAlphabetically(Object.entries(individualPlayerData))
-    // spread(dataToBeCharted, sortedArr)
-    // dataToBeCharted[findTimeIndex(dataToBeCharted)][name] = timeConverter(dataToBeCharted[findTimeIndex(dataToBeCharted)][name])
-    return spread(dataToBeCharted, sortedArr)
+    emptyFormatArr.map((elem, i) => {
+      return elem[name] = sortedArr[i][1]
+    })
+    emptyFormatArr[findTimeIndex(emptyFormatArr)][name] = timeConverter(emptyFormatArr[findTimeIndex(emptyFormatArr)][name])
+    return emptyFormatArr
   }
 
-  console.log("spreadddddddddddddddddddddddddddddddd", toChartData(props.player1Data, player1Name, emptyData))
-  // console.log("spread22222222222222222dddddddddddddddd", toChartData(props.player1Data, "player2", emptyData))
-  // console.log("spread", emptyData)
+  useEffect(() => {
+    const player1ChartData = createPlayerData(props.player1Data, player1Name)
+    removePIDandSeason(player1ChartData)
+    setChartData(player1ChartData)
+  }, [])
 
-  // useEffect(() => {
-  //   addTochartData(props.player1Data, player1Name, emptyData)
-  //   find(emptyData)
-  //   setChartData(emptyData)
-  // }, [])
-
-  // useEffect(() => {
-  //   if (props.player2Data) {
-  //     setChartData(null)
-  //     // THESE CAUSE DATA TO BE ADDED IN INCORRECTLY
-  //     addTochartData(props.player1Data, props.player1.first_name, emptyData)
-  //     addTochartData(props.player2Data, props.player2.first_name, emptyData)
-  //     // removePIDandYear(emptyData)
-  //     find(emptyData)
-  //     setChartData(emptyData)
-  //     console.log("it me")
-  //   }
-  // }, [props.player2Data])
-
-  // console.log("checking why 16 length arr", chartData)
-
-  function sameTwice() {
-    let arrX = addTochartData(props.player1Data, player1Name, emptyData)
-    return addTochartData(props.player1Data, player1Name, arrX)
-  }
-
-  // console.log("ARRRRRGGGG", sameTwice())
+  useEffect(() => {
+    if (props.player2Data) {
+      setChartData(null)
+      console.log("it me")
+      const player1ChartData = createPlayerData(props.player1Data, props.player1.first_name)
+      const player2ChartData = createPlayerData(props.player2Data, props.player2.first_name)
+      removePIDandSeason(player1ChartData)
+      removePIDandSeason(player2ChartData)
+      const combinedData = combinePlayerData(player1ChartData, player2ChartData)
+      setChartData(combinedData)
+    }
+  }, [props.player2Data])
 
   return (
     <div>
@@ -127,8 +103,8 @@ export default function ComparisonChart(props) {
           }
         </BarChart>}
       {/* <button onClick={() => console.log(props.player2Data)}>AVERAGE22</button>
-      <button onClick={() => console.log(addTochartDataNEW(props.player1Data, player1Name, emptyData))}>1 player to chart</button>
-      <button onClick={() => console.log(addTochartDataNEW(props.player2Data, props.player2.first_name, emptyData))}>2 player to chart</button> */}
+      <button onClick={() => console.log(createPlayerDataNEW(props.player1Data, player1Name, emptyData))}>1 player to chart</button>
+      <button onClick={() => console.log(createPlayerDataNEW(props.player2Data, props.player2.first_name, emptyData))}>2 player to chart</button> */}
       <button onClick={() => console.log(props.player2.first_name)}>props 2 data</button>
       <button onClick={() => props.setPlayer2Data()}>remove 2</button>
 

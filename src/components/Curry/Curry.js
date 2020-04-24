@@ -79,6 +79,30 @@ export default function ComparisonChart(props) {
         'fg3_pct': 0.34,
         'ft_pct': 0.697
     }
+    const dataRebObj = {
+        'games_played': 60,
+        'Player_id': 237,
+        'season': 2019,
+        'min': "34:54",
+        'fgm': 9.77,
+        'fga': 19.6,
+        'fg3m': 2.22,
+        'fg3a': 6.35,
+        'fga': 3.98,
+        'ftm': 5.72,
+        'oreb': 0.95,
+        'dreb': 6.9,
+        'reb': 7.85,
+        'ast': 80.6,
+        'stl': 1.23,
+        'blk': 0.5,
+        'turnover': 3.9,
+        'pf': 1.77,
+        'pts': 25.73,
+        'fg_pct': 0.498,
+        'fg3_pct': 0.34,
+        'ft_pct': 0.697
+    }
 
 
     const dataCur = [
@@ -112,18 +136,43 @@ export default function ComparisonChart(props) {
         })
     }
 
-    console.log("spreadddd", spread(spread(dataCur, dataLeb), dataReb))
+    // console.log("spreadddd", spread(spread(dataCur, dataLeb), dataReb))
 
 
     // console.log(parseFloat("3:2139"))
 
     function sortArrObjAlphabetically(arr) {
         arr.sort((a, b) => {
-            let textA = a.name
-            let textB = b.name
-            return textA.localeCompare(textB)
+            return a[0].localeCompare(b[0])
         })
+        return arr
     }
+
+    // const emptyFormatArr = [...BLANKAVG]
+    // const numbers = [1, 2, 3];
+    // const numbersCopy = [...numbers];
+    // numbersCopy.push(4);
+    // console.log(numbers, numbersCopy);
+
+
+    // function charting(obj) {
+    //     const emptyFormatArr = [...BLANKAVG]
+    //     const sortedArr = sortArrObjAlphabetically(Object.entries(obj))
+    //     // console.log("sortedArr", sortedArr)
+    //     // console.log(sortedArr[0][1])
+    //     emptyFormatArr.map((elem, i) => {
+    //         elem["lebrrronnnn"] = sortedArr[i]
+    //     })
+    //     return emptyFormatArr
+    // }
+
+    // let result1 = charting(dataLebObj)
+    // let result2 = charting(dataRebObj)
+
+    // console.log(result1)
+    // console.log(result2)
+    // console.log(emptyFormatArr.pop())
+    // console.log(emptyFormatArr.length)
 
     // console.log(dataCur.sort((a, b) => {
     //     let textA = a.name
@@ -137,7 +186,7 @@ export default function ComparisonChart(props) {
     const [chartData, setChartData] = useState()
     const [chartData2, setChartData2] = useState()
 
-    const emptyData = BLANKAVG
+    // const emptyData = BLANKAVG
     // const player1Name = props.player1.first_name
     // const player2Name = props.player2.first_name
 
