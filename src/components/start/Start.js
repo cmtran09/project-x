@@ -98,16 +98,20 @@ export default function Start() {
       <button onClick={() => console.log(player1Data)}>AVERAGE</button>
       <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
       <button onClick={() => console.log(player1)}>player1</button>
-      <button onClick={() => {
-        setPlayer1Data(null)
-        setPlayer1(null)
-        setPlayer1Selected(false)
-      }}>remove player 1</button>
-      <button onClick={() => {
-        setPlayer2Data(null)
-        setPlayer2(null)
-        setPlayer2Selected(false)
-      }}>remove player 2</button>
+      {!player2Selected &&
+        <button onClick={() => {
+          setPlayer1Data(null)
+          setPlayer1(null)
+          setPlayer1Selected(false)
+        }}>remove player 1</button>
+      }
+      {player2Selected &&
+        <button onClick={() => {
+          setPlayer2Data(null)
+          setPlayer2(null)
+          setPlayer2Selected(false)
+        }}>remove player 2</button>
+      }
     </div >
   )
 }
