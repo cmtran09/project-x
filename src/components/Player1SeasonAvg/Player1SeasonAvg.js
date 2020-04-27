@@ -23,7 +23,7 @@ export default function Player1SeasonAvg(props) {
 
   return (
     <div>
-      <p>{`plyer 1 : ${player1Name} AVG component`}</p>
+      <p>{`player 1 : ${player1Name} AVG component`}</p>
     </div>
 
   )
