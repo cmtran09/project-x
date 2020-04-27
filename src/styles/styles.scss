@@ -4,3 +4,51 @@
 //   color: $primary-color;
 //   background-color: $bg;
 // }
+*{
+  // background-color: #EFF3ED;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    background-color: #EFF3ED;
+
+}
+
+button {
+  height: 56px
+}
+
+#player-search {
+  width: 500px;
+} 
+
+#player-search-button{
+  background-color: #e37222;
+}
+
+.main-app {
+  margin: 20px 200px 0 200px
+}
+
+.list-results {
+// background-color: black;
+}
+
+.selected-player-txt{
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.cmtran09head {
+  font-size: 15px;
+  background: -webkit-linear-gradient(163deg, rgba(227,114,34,1) 0%, rgba(7,136,147,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 5px 0 10px 0
+}
+
+// background: rgb(227,114,34);
+// background: linear-gradient(163deg, rgba(227,114,34,1) 0%, rgba(7,136,147,1) 100%);
