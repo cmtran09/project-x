@@ -34,9 +34,6 @@ export default function Player2SeasonAvg(props) {
   return (
     <div>
       <p>{`plyer 2 : ${player2Name} AVG component`}</p>
-
-      <button onClick={() => console.log(props.player2Data)}>average in p2 comp AVERAGE2</button>
-
     </div>
 
   )

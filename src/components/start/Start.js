@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    maxWidth: 550,
+    maxWidth: 600,
     backgroundColor: theme.palette.background.paper,
     position: 'relative',
     overflow: 'auto',
@@ -44,7 +44,7 @@ export default function Start() {
   const [player1Data, setPlayer1Data] = useState(null)
   const [player2Data, setPlayer2Data] = useState(null)
 
-  const [playerSearch, setPlayerSearch] = useState(null)
+  const [playerSearch, setPlayerSearch] = useState(undefined)
   const [searchResult, setSearchResult] = useState([])
 
   function getPlayer(e) {
@@ -70,42 +70,6 @@ export default function Start() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <div className="list">
-              {searchResult &&
-                <List
-                  className={`${classes.root} list-results`}
-                >
-                  <SearchResult
-                    searchResult={searchResult}
-                    setPlayer1={setPlayer1}
-                    player1Selected={player1Selected}
-                    setPlayer1Selected={setPlayer1Selected}
-                    setPlayer2={setPlayer2}
-                    player2Selected={player2Selected}
-                    setPlayer2Selected={setPlayer2Selected}
-                    setSearchResult={setSearchResult}
-                  />
-                </List>
-              }
-            </div>
-            <button onClick={() => console.log(player1)}>button</button>
-            <p>stats</p>
-            {
-              player1 &&
-              <Player1SeasonAvg
-                player1={player1}
-                setPlayer1Data={setPlayer1Data}
-                player1Data={player1Data}
-              />
-            }
-            {
-              player2 &&
-              <Player2SeasonAvg
-                player2={player2}
-                setPlayer2Data={setPlayer2Data}
-                player2Data={player2Data}
-              />
-            }
             {
               player1Data &&
               <ComparisonChart
@@ -117,48 +81,48 @@ export default function Start() {
               // player2Data={!player2Data ? null : player2Data}
               />
             }
-
-            <button onClick={() => console.log(player1Data)}>AVERAGE</button>
-            <button onClick={() => console.log(player2Data)}>AVERAGE2</button>
-            <button onClick={() => console.log(player1)}>player1</button>
-            {
-              !player2Selected &&
-              <button onClick={() => {
-                setPlayer1Data(null)
-                setPlayer1(null)
-                setPlayer1Selected(false)
-              }}>remove player 1</button>
-            }
-            {
-              player2Selected &&
-              <button onClick={() => {
-                setPlayer2Data(null)
-                setPlayer2(null)
-                setPlayer2Selected(false)
-              }}>remove player 2</button>
-            }
           </Paper>
         </Grid>
-        {/* ================================== PLAYER 1 */}        <Grid item xs={!player1Selected ? 12 : 6}>
+        {/* ================================== PLAYER 1 */}
+        <Grid item xs={!player1Selected ? 12 : 6}>
           <Paper className={classes.paper}>
             {player1 && <Player1 player1={player1} /> || <p className="selected-player-txt"> Player 1: Not Selected</p>}
             <TextField
               id="player-search"
-              disabled={player1Selected && "disabled"}
+              disabled={player1Selected && true}
               label="Search Nba Player"
               variant="outlined"
               type="text"
               placeholder="Player 1"
               color="primary"
+              value={player1Selected ? `${player1.first_name} ${player1.last_name}` : playerSearch}
               onChange={handleChange} />
             <Button
               id="player-search-button"
-              disabled={player2Selected && "disabled"}
+              disabled={player1Selected && true}
               onClick={e => {
                 getPlayer(e)
               }
               }><SportsBasketballIcon />Search<SportsBasketballIcon />
             </Button>
+            {searchResult && !player1Selected &&
+              <List
+                className={`${classes.root} list-results`}
+                id="player1-search-result"
+              >
+                <SearchResult
+                  searchResult={searchResult}
+                  setPlayerSearch={setPlayerSearch}
+                  setPlayer1={setPlayer1}
+                  player1Selected={player1Selected}
+                  setPlayer1Selected={setPlayer1Selected}
+                  setPlayer2={setPlayer2}
+                  player2Selected={player2Selected}
+                  setPlayer2Selected={setPlayer2Selected}
+                  setSearchResult={setSearchResult}
+                />
+              </List>
+            }
             {player1Selected && !player2Selected &&
               <Button
                 id="player-search-button"
@@ -178,11 +142,12 @@ export default function Start() {
             {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>}
             <TextField
               id="player-search"
-              disabled={player2Selected && "disabled"}
+              disabled={player2Selected && true}
               label="Search Nba Player"
               variant="outlined"
               type="text"
               placeholder="Player 2"
+              value={player2Selected ? `${player2.first_name} ${player2.last_name}` : playerSearch}
               color="primary"
               onChange={handleChange} />
             <Button
@@ -193,6 +158,24 @@ export default function Start() {
               }
               }><SportsBasketballIcon />Search<SportsBasketballIcon />
             </Button>
+            {searchResult && player1Selected &&
+              <List
+                className={`${classes.root} list-results`}
+                id="player2-search-result"
+              >
+                <SearchResult
+                  searchResult={searchResult}
+                  setPlayer1={setPlayer1}
+                  player1Selected={player1Selected}
+                  setPlayer1Selected={setPlayer1Selected}
+                  setPlayerSearch={setPlayerSearch}
+                  setPlayer2={setPlayer2}
+                  player2Selected={player2Selected}
+                  setPlayer2Selected={setPlayer2Selected}
+                  setSearchResult={setSearchResult}
+                />
+              </List>
+            }
             {player2Selected &&
               <Button
                 id="player-search-button"
@@ -200,6 +183,7 @@ export default function Start() {
                   setPlayer2Data(null)
                   setPlayer2(null)
                   setPlayer2Selected(false)
+                  setPlayerSearch(undefined)
                 }
                 }>REMOVE
               </Button>
@@ -212,24 +196,26 @@ export default function Start() {
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             {player1 && <Player1 player1={player1} /> || <p className="selected-player-txt"> Player 1: Not Selected</p>}
+            {player1 &&
+              <Player1SeasonAvg
+                player1={player1}
+                setPlayer1Data={setPlayer1Data}
+                player1Data={player1Data}
+              />
+            }
           </Paper>
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>}
+            {player2 &&
+              <Player2SeasonAvg
+                player2={player2}
+                setPlayer2Data={setPlayer2Data}
+                player2Data={player2Data}
+              />
+            }
           </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
         </Grid>
       </Grid>
 

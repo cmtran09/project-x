@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { BLANKAVG } from "../../constants/Constants.js"
 
 export default function ComparisonChart(props) {
@@ -70,11 +70,7 @@ export default function ComparisonChart(props) {
   }, [props.player2Data])
 
   return (
-    <div>
-      hello world this is comparisson chart component
-      <button onClick={() => console.log(props.player2Data)}>PROPS AVERAGE2</button>
-      <button onClick={() => console.log(props.player1Data)}>PROPS AVERAGE</button>
-      <button onClick={() => console.log(chartData)}>chart data from the comparison component AVERAGE</button>
+    <div className="chart">
       {chartData &&
         <BarChart
           width={900}
@@ -93,9 +89,6 @@ export default function ComparisonChart(props) {
             <Bar dataKey={props.player2.first_name} fill="#000E85" />
           }
         </BarChart>}
-      <button onClick={() => console.log(props.player2.first_name)}>props 2 data</button>
-      <button onClick={() => props.setPlayer2Data()}>remove 2</button>
-
     </div>
   )
 }
