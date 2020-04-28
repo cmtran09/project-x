@@ -10,9 +10,6 @@ import Start from "./components/Start/Start"
 
 const App = () => (
 	<BrowserRouter>
-		{/* <BrowserRouter basename="/project-x-nba-comparison/"> */}
-		{/* <NavBar /> */}
-		{/* <Route exact path="/" component={} /> */}
 		<Start exact path="/" />
 	</BrowserRouter>
 )
