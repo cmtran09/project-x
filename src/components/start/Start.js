@@ -72,21 +72,6 @@ export default function Start() {
         Project X - NBA Comparison App
       </p>
       <Grid className={classes.grid} container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            {
-              player1Data &&
-              <ComparisonChart
-                player1={player1}
-                player2={player2}
-                player1Data={player1Data}
-                player2Data={!player2Data ? null : player2Data}
-                setPlayer2Data={setPlayer2Data}
-              // player2Data={!player2Data ? null : player2Data}
-              />
-            }
-          </Paper>
-        </Grid>
         {/* ================================== PLAYER 1 */}
         <Grid item xs={!player1Selected ? 12 : 6}>
           <Paper className={classes.paper}>
@@ -195,34 +180,48 @@ export default function Start() {
             }
           </Paper>
         </Grid>}
+        {/* ================================== CHART */}
+        {
+          player1Data &&
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <ComparisonChart
+                player1={player1}
+                player2={player2}
+                player1Data={player1Data}
+                player2Data={!player2Data ? null : player2Data}
+                setPlayer2Data={setPlayer2Data}
+              />
+            </Paper>
+          </Grid>
+        }
         {/*         {/* ================================== PLAYER 1 LAST 5  */}
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            {/* {player1 && <Player1 player1={player1} />} */}
-            {player1 &&
+        {player1 &&
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
               <Player1SeasonAvg
                 player1={player1}
                 setPlayer1Data={setPlayer1Data}
                 player1Data={player1Data}
               />
-            }
-            {player1 && <Last5Games player={player1} />}
-          </Paper>
-        </Grid>
+              <Last5Games player={player1} />
+            </Paper>
+          </Grid>
+        }
         {/*         {/* ================================== PLAYER 2 LAST 5  */}
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            {/* {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>} */}
-            {player2 &&
+        {player2 &&
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+
               <Player2SeasonAvg
                 player2={player2}
                 setPlayer2Data={setPlayer2Data}
                 player2Data={player2Data}
               />
-            }
-            {player2 && <Last5Games player={player2} />}
-          </Paper>
-        </Grid>
+              <Last5Games player={player2} />
+            </Paper>
+          </Grid>
+        }
       </Grid>
     </div >
   )

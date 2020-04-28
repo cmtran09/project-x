@@ -21,29 +21,17 @@ button {
 }
 
 #player-search {
-  min-width: 400px
+  min-width: 400px;
 } 
 
 #player1-search-result {
-  // margin-left: 50%;
-  // display: block;
-  // position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
-  // background-color: blue;
-  // text-align: center;
 } 
 
 #player2-search-result {
-  // margin-left: 50%;
-  // display: block;
-  // position: absolute;
-  // left: 0;
-  // right: 0;
   margin: 0 auto;
-  // background-color: blue;
-  // text-align: center;
 } 
 
 #player-search-button{
@@ -70,13 +58,13 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  margin: 5px 0 10px 0
+  margin: 5px 0 300px 0
 }
 
 .chart{
   width: 900px;
   height: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
 // background-color: blue;
 }
 
