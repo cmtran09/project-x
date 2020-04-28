@@ -17,7 +17,7 @@ body{
 }
 
 button {
-  height: 56px
+  height: 56px;
 }
 
 #player-search {
@@ -25,10 +25,13 @@ button {
 } 
 
 #player1-search-result {
-  left: 0;
-  right: 0;
   margin: 0 auto;
 } 
+
+// .grod {
+//   background-color: red;
+//   padding-top: 8px;
+// }
 
 #player2-search-result {
   margin: 0 auto;
@@ -36,6 +39,7 @@ button {
 
 #player-search-button{
   background-color: #e37222;
+  margin-left: 4px;
 }
 
 .main-app {

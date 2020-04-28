@@ -73,9 +73,8 @@ export default function Start() {
       </p>
       <Grid className={classes.grid} container spacing={3}>
         {/* ================================== PLAYER 1 */}
-        <Grid item xs={!player1Selected ? 12 : 6}>
+        <Grid className="grod" item xs={!player1Selected ? 12 : 6}>
           <Paper className={classes.paper}>
-            {player1 && <Player1 player1={player1} /> || <p className="selected-player-txt"> Player 1: Not Selected</p>}
             <TextField
               id="player-search"
               disabled={player1Selected && true}
@@ -98,6 +97,7 @@ export default function Start() {
               <List
                 className={`${classes.root} list-results`}
                 id="player1-search-result"
+                disablePadding={true}
               >
                 <SearchResult
                   searchResult={searchResult}
@@ -129,7 +129,6 @@ export default function Start() {
         {/* ================================== PLAYER 2 */}
         {player1Selected && <Grid item xs={6}>
           <Paper className={classes.paper}>
-            {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>}
             <TextField
               id="player-search"
               disabled={player2Selected && true}
