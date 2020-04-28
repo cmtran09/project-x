@@ -15,6 +15,7 @@ import Player1 from "../Player1/Player1"
 import Player2 from "../Player2/Player2"
 import Player1SeasonAvg from "../Player1SeasonAvg/Player1SeasonAvg"
 import Player2SeasonAvg from "../Player2SeasonAvg/Player2SeasonAvg"
+import Last5Games from "../Last5Games/Last5Games"
 
 import ComparisonChart from "../ComparisonChart/ComparisonChart"
 
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  gird: {
+    maxWidth: 600,
+  }
 }));
 
 export default function Start() {
@@ -67,7 +71,7 @@ export default function Start() {
       <p className="cmtran09head">
         Project X - NBA Comparison App
       </p>
-      <Grid container spacing={3}>
+      <Grid className={classes.grid} container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             {
@@ -203,6 +207,7 @@ export default function Start() {
                 player1Data={player1Data}
               />
             }
+            {player1 && <Last5Games player={player1} />}
           </Paper>
         </Grid>
         <Grid item xs={6}>

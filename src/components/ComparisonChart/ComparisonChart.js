@@ -72,23 +72,26 @@ export default function ComparisonChart(props) {
   return (
     <div className="chart">
       {chartData &&
-        <BarChart
-          width={900}
-          height={300}
-          //removes the season for recharts
-          data={chartData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey={props.player1.first_name} fill="#851700" />
-          {/* add conditional if player selected then plot data */}
-          {props.player2Data &&
-            <Bar dataKey={props.player2.first_name} fill="#000E85" />
-          }
-        </BarChart>}
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            width={900}
+            height={300}
+            //removes the season for recharts
+            data={chartData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey={props.player1.first_name} fill="#851700" />
+            {/* add conditional if player selected then plot data */}
+            {props.player2Data &&
+              <Bar dataKey={props.player2.first_name} fill="#000E85" />
+            }
+          </BarChart>
+        </ResponsiveContainer>
+      }
     </div>
   )
 }

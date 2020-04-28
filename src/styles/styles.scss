@@ -21,13 +21,13 @@ button {
 }
 
 #player-search {
-  width: 500px;
+  min-width: 400px
 } 
 
 #player1-search-result {
   // margin-left: 50%;
   // display: block;
-  position: absolute;
+  // position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -51,7 +51,8 @@ button {
 }
 
 .main-app {
-  margin: 20px 200px 0 200px
+  margin: 20px 200px 0 200px;
+  min-width: 1090px;
 }
 
 .list-results {
