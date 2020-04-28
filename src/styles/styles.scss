@@ -1,0 +1,82 @@
+// $primary-color: white;
+// $bg: black;
+// h1 {
+//   color: $primary-color;
+//   background-color: $bg;
+// }
+*{
+  // background-color: #EFF3ED;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #EFF3ED;
+
+}
+
+.last5{
+  font-weight: bold;
+  margin: 10px 0 10px 0;
+}
+
+button {
+  height: 56px;
+}
+
+#player-search {
+  min-width: 400px;
+} 
+
+#player1-search-result {
+  margin: 0 auto;
+} 
+
+// .grod {
+//   background-color: red;
+//   padding-top: 8px;
+// }
+
+#player2-search-result {
+  margin: 0 auto;
+} 
+
+#player-search-button{
+  background-color: #e37222;
+  margin-left: 4px;
+}
+
+.main-app {
+  margin: 20px 200px 0 200px;
+  min-width: 1090px;
+}
+
+.list-results {
+// background-color: black;
+}
+
+.selected-player-txt{
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.cmtran09head {
+  font-size: 15px;
+  background: -webkit-linear-gradient(163deg, rgba(227,114,34,1) 0%, rgba(7,136,147,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 5px 0 300px 0
+}
+
+.chart{
+  width: 900px;
+  height: 300px;
+  margin: 20px auto;
+// background-color: blue;
+}
+
+// background: rgb(227,114,34);
+// background: linear-gradient(163deg, rgba(227,114,34,1) 0%, rgba(7,136,147,1) 100%);
