@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
+    minWidth: 400,
   },
 });
 
@@ -25,54 +25,38 @@ export default function Last5GamesTable(props) {
     return { home, homeScore, visitingScore, visiting };
   }
 
-
-
-  // console.log("outside useeffect", rows)
-
   useEffect(() => {
     let rows = []
-    console.log("porps [props.data[0].home_team.name", [props.data[0].home_team.name])
-
     for (let i = 5; i > 0; i--) {
       rows.push(createData(props.data[i].home_team.name, props.data[i].home_team_score, props.data[i].visitor_team_score, props.data[i].visitor_team.name))
     }
-
-    console.log("porps [props.data[0].home_team.nameROWWWWWSA", rows)
     setTable(rows)
   }, [props.data[0].home_team.name])
 
-
-  // console.log("table", props.data[0].home_team.name)
   return (
-    <div>
-      hello table
-      <TableContainer component={Paper}>
-        <Table className={classes.table} size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">Home Team</TableCell>
-              <TableCell align="center">Score</TableCell>
-              <TableCell align="center">Score</TableCell>
-              <TableCell align="center">Visiting Team</TableCell>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Home Team</TableCell>
+            <TableCell align="center">Score</TableCell>
+            <TableCell align="center">Score</TableCell>
+            <TableCell align="center">Visiting Team</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {table.map((row, i) => (
+            <TableRow key={i}>
+              <TableCell align="center" component="th" scope="row">
+                {row.home}
+              </TableCell>
+              <TableCell align="center">{row.homeScore}</TableCell>
+              <TableCell align="center">{row.visitingScore}</TableCell>
+              <TableCell align="center">{row.visiting}</TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {table.map((row, i) => (
-              <TableRow key={i}>
-                <TableCell align="center" component="th" scope="row">
-                  {row.home}
-                </TableCell>
-                <TableCell align="center">{row.homeScore}</TableCell>
-                <TableCell align="center">{row.visitingScore}</TableCell>
-                <TableCell align="center">{row.visiting}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      <button onClick={e => console.log(table)}>buttoin</button>
-      {/* <button onClick={e => console.log(willTable)}>buttoin</button> */}
-    </div>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }

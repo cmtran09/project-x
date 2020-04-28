@@ -24,12 +24,10 @@ export default function Last5Games(props) {
       .catch(err => console.log(err))
   }, [])
 
-  // console.log(gameData)
+  console.log(props)
   return (
     <div>
-      hello last 5
-      team id: {props.player.team.id}
-      {/* {gameData[0].home_team && <h1>GOTIT</h1>} */}
+      {props.player.team.full_name} Last 5 games
       {gameData[0].home_team && <Last5GamesTable data={gameData} />}
     </div>
   )

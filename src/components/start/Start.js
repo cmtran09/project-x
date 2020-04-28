@@ -97,7 +97,7 @@ export default function Start() {
               label="Search Nba Player"
               variant="outlined"
               type="text"
-              placeholder="Player 1"
+              placeholder="Player 1 (Lebron James)"
               color="primary"
               value={player1Selected ? `${player1.first_name} ${player1.last_name}` : playerSearch}
               onChange={handleChange} />
@@ -127,9 +127,10 @@ export default function Start() {
                 />
               </List>
             }
-            {player1Selected && !player2Selected &&
+            {player1Selected &&
               <Button
                 id="player-search-button"
+                disabled={player2Selected && true}
                 onClick={e => {
                   setPlayer1Data(null)
                   setPlayer1(null)
@@ -150,7 +151,7 @@ export default function Start() {
               label="Search Nba Player"
               variant="outlined"
               type="text"
-              placeholder="Player 2"
+              placeholder="Player 2 (Stephen Curry)"
               value={player2Selected ? `${player2.first_name} ${player2.last_name}` : playerSearch}
               color="primary"
               onChange={handleChange} />
@@ -194,12 +195,10 @@ export default function Start() {
             }
           </Paper>
         </Grid>}
-
-
-
+        {/*         {/* ================================== PLAYER 1 LAST 5  */}
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            {player1 && <Player1 player1={player1} /> || <p className="selected-player-txt"> Player 1: Not Selected</p>}
+            {/* {player1 && <Player1 player1={player1} />} */}
             {player1 &&
               <Player1SeasonAvg
                 player1={player1}
@@ -210,9 +209,10 @@ export default function Start() {
             {player1 && <Last5Games player={player1} />}
           </Paper>
         </Grid>
+        {/*         {/* ================================== PLAYER 2 LAST 5  */}
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>}
+            {/* {player2 && <Player2 player2={player2} /> || <p className="selected-player-txt"> Player 2: Not Selected</p>} */}
             {player2 &&
               <Player2SeasonAvg
                 player2={player2}
@@ -220,12 +220,10 @@ export default function Start() {
                 player2Data={player2Data}
               />
             }
+            {player2 && <Last5Games player={player2} />}
           </Paper>
         </Grid>
       </Grid>
-
-
-
     </div >
   )
 }
