@@ -34,15 +34,8 @@ yarn serve
 * Enzyme
 * Postman
 
-## Approach Taken
-
-
-## Dynamic appearance
-
-![House Sort GIF](./src/images/potter%20gif%20640px%20standard.gif)
-
 ## Featured Code
-### Filtering Functionality
+### Parsing Data 
 
 
 ### Quiz 

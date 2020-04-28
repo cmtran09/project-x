@@ -9,11 +9,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
     background-color: #EFF3ED;
 
+}
+
+.last5{
+  font-weight: bold;
+  margin: 10px 0 10px 0;
 }
 
 button {

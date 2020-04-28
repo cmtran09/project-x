@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
 import Last5GamesTable from "../Last5GamesTable/Last5GamesTable"
 
 export default function Last5Games(props) {
 
   const [gameData, setGameData] = useState([{}])
+
+  const teamName = props.player.team.full_name
+  const resultName = `${teamName.slice(0, teamName.length - 1)}'s`
 
   useEffect(() => {
     axios.get(`https://www.balldontlie.io/api/v1/games?seasons[]=2019&page=4&team_ids[]=${props.player.team.id}`)
@@ -27,7 +21,9 @@ export default function Last5Games(props) {
   console.log(props)
   return (
     <div>
-      {props.player.team.full_name} Last 5 games
+      <p className="last5">
+        {resultName} Last 5 Games
+      </p>
       {gameData[0].home_team && <Last5GamesTable data={gameData} />}
     </div>
   )
