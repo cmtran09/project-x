@@ -9,10 +9,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-
 import SearchResult from "../SearchResult/SearchResult"
-import Player1 from "../Player1/Player1"
-import Player2 from "../Player2/Player2"
 import Player1SeasonAvg from "../Player1SeasonAvg/Player1SeasonAvg"
 import Player2SeasonAvg from "../Player2SeasonAvg/Player2SeasonAvg"
 import Last5Games from "../Last5Games/Last5Games"
