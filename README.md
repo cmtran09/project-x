@@ -22,6 +22,9 @@ Finally, to run on your brower via localhost:8000
 yarn serve
 ```
 
+See below for a quick demo of the application.
+![Demo](https://i.imgur.com/z5HWXzE.gif)
+
 ## Technologies Used
 * HTML
 * SCSS
