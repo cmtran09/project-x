@@ -23,7 +23,7 @@ yarn serve
 ```
 
 See below for a quick demo of the application.
-![Demo](https://i.imgur.com/z5HWXzE.gif)
+![Demo](https://imgur.com/XgZHRr4.gif)
 
 ## Technologies Used
 * HTML
