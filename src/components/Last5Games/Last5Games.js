@@ -19,12 +19,13 @@ export default function Last5Games(props) {
   }, [])
 
   console.log(props)
+  console.log(gameData, "homedata")
   return (
     <div>
       <p className="last5">
         {resultName} Last 5 Games
       </p>
-      {gameData[0].home_team && <Last5GamesTable data={gameData} />}
+      {gameData.length < 5 ? <h1>Not Enough Data to form Chart</h1> : gameData[0].home_team && <Last5GamesTable data={gameData} />}
     </div>
   )
 }
